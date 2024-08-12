@@ -186,17 +186,43 @@
       const smallImages = document.getElementsByClassName("small-image");
       const productTitle = document.getElementById("productTitle");
       const quantityInput = document.getElementById("quantityInput");
+      const selectType = document.querySelector("select");
 
       for (let i = 0; i < smallImages.length; i++) {
         smallImages[i].onclick = function () {
           mainImage.src = smallImages[i].src;
           productTitle.textContent = smallImages[i].getAttribute("data-title");
+          selectType.value = smallImages[i].getAttribute("data-title"); // Update select dropdown based on image
         };
       }
 
       quantityInput.addEventListener("input", function () {
         if (quantityInput.value < 0) {
           quantityInput.value = 0;
+        }
+      });
+
+      document.querySelector("button").addEventListener("click", function () {
+        const selectedOption =
+          selectType.options[selectType.selectedIndex].text;
+        const price = 100000; // You may need to update this to fetch dynamically
+        const quantity = parseInt(quantityInput.value, 10);
+
+        if (quantity > 0) {
+          const cartItem = {
+            productType: selectedOption,
+            price: price,
+            quantity: quantity,
+            image: document.getElementById("MainImg").src,
+          };
+
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart.push(cartItem);
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+          alert("Item added to cart!");
+        } else {
+          alert("Please select a quantity.");
         }
       });
     </script>
