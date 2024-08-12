@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OWY</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <a href="index.html"
+        ><img
+          src="image/owy-high-resolution-logo-transparent (1).png"
+          alt="OWY Logo"
+      /></a>
+
+      <nav>
+        <ul class="navbar">
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#footer">About</a></li>
+          <li>
+            <a href="#header"
+              ><i class="fa fa-shopping-basket" aria-hidden="true"></i
+            ></a>
+          </li>
+          <a href="#" class="close"><i class="fa fa-times"></i></a>
+        </ul>
+      </nav>
+      <div class="mobile">
+        <i id="bar" class="fas fa-outdent"></i>
+      </div>
+    </header>
+
+    <section id="cart" class="cart">
+      <table width="100%">
+        <thead>
+          <tr>
+            <td>Remove</td>
+            <td>Image</td>
+            <td>Product</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Subtotal</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="#"><i class="far fa-times-circle"></i></a>
+            </td>
+            <td><img src="image/Preserve 1.jpg" width="70px" alt="" /></td>
+            <td>Glassed Preserved Flowers</td>
+            <td>Rp 150.000</td>
+            <td><input type="number" value="1" min="0" name="" id="" /></td>
+            <td>150.000</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#"><i class="far fa-times-circle"></i></a>
+            </td>
+            <td><img src="image/Stuffed 1.webp" width="70px" alt="" /></td>
+            <td>Giant Stuffed Bear</td>
+            <td>Rp 100.000</td>
+            <td><input type="number" value="1" min="0" name="" id="" /></td>
+            <td>100.000</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#"><i class="far fa-times-circle"></i></a>
+            </td>
+            <td>
+              <img
+                src="image/Music-Box-Peksi-Merak-S-01.jpg"
+                width="70px"
+                alt=""
+              />
+            </td>
+            <td>Premium Music Box</td>
+            <td>Rp 250.000</td>
+            <td><input type="number" value="1" min="0" name="" id="" /></td>
+            <td>250.000</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="add-cart" class="add-cart">
+      <div id="coupon">
+        <h3>Apply Coupons</h3>
+        <div>
+          <input type="text" placeholder="Enter your coupons!" />
+          <button class="button">Apply</button>
+        </div>
+      </div>
+
+      <div id="subtotal">
+        <h3>Total</h3>
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td>Rp 500.000</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td>Free</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>Rp 500.000</strong></td>
+          </tr>
+        </table>
+        <button class="button">Checkout</button>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="box">
+        <h2>Shop More!</h2>
+        <p>Gifts For Your Beloved</p>
+        <div class="container">
+          <article class="card">
+            <a href="product1.html">
+              <img src="image/Music-Box-Peksi-Merak-S-03.jpg" alt="Music Box" />
+              <div class="desc">
+                <h5>Music Box</h5>
+                <div class="rate">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <h4>Rp 250.000</h4>
+              </div>
+            </a>
+          </article>
+          <article class="card">
+            <a href="product2.html">
+              <img src="image/Preserve 1.jpg" alt="Preserved Flower" />
+              <div class="desc">
+                <h5>Preserved Flower</h5>
+                <div class="rate">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <h4>Rp 150.000</h4>
+              </div>
+            </a>
+          </article>
+          <article class="card">
+            <a href="product3.html">
+              <img src="image/Stuffed 1.webp" alt="Giant Stuffed Bear" />
+              <div class="desc">
+                <h5>Giant Stuffed Bear</h5>
+                <div class="rate">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <h4>Rp 100.000</h4>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="column">
+        <img
+          class="logo"
+          src="image/owy-high-resolution-logo-transparent (2).png"
+          alt="OWY Logo"
+        />
+        <h4>Contact</h4>
+        <p>
+          <strong>Address:</strong> To The Moon Street, No. 28, Bandung,
+          Indonesia
+        </p>
+        <p><strong>Phone:</strong> +62 815 7283 9183</p>
+        <p><strong>Open Hours:</strong> 09.00-17.00</p>
+        <div class="social">
+          <h4>Our Socials</h4>
+          <div class="icon">
+            <a href="https://facebook.com" target="_blank">
+              <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h4>My Account</h4>
+        <a href="#">Sign In</a>
+        <a href="#">Cart</a>
+        <a href="#">My Orders</a>
+        <a href="#">Help</a>
+      </div>
+
+      <div class="app">
+        <h4>COMING SOON!</h4>
+        <p>On App Store and Google Play</p>
+        <div class="row">
+          <img src="image/app.jpg" alt="App Store" />
+          <img src="image/play.jpg" alt="Google Play" />
+        </div>
+        <p>Payment Methods</p>
+        <img src="image/pay.png" alt="Payment Methods" />
+      </div>
+    </footer>
+
+    <script>
+      const mainImage = document.getElementById("MainImg");
+      const smallImages = document.getElementsByClassName("small-image");
+      const productTitle = document.getElementById("productTitle");
+      const quantityInput = document.getElementById("quantityInput");
+
+      for (let i = 0; i < smallImages.length; i++) {
+        smallImages[i].onclick = function () {
+          mainImage.src = smallImages[i].src;
+          productTitle.textContent = smallImages[i].getAttribute("data-title");
+        };
+      }
+
+      quantityInput.addEventListener("input", function () {
+        if (quantityInput.value < 0) {
+          quantityInput.value = 0;
+        }
+      });
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
