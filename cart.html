@@ -3,19 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OWY</title>
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="header" id="header">
@@ -24,14 +17,13 @@
           src="image/owy-high-resolution-logo-transparent (1).png"
           alt="OWY Logo"
       /></a>
-
       <nav>
         <ul class="navbar">
           <li><a class="active" href="index.html">Home</a></li>
           <li><a href="#products">Shop</a></li>
           <li><a href="#footer">About</a></li>
           <li>
-            <a href="#header"
+            <a href="cart.html"
               ><i class="fa fa-shopping-basket" aria-hidden="true"></i
             ></a>
           </li>
@@ -56,42 +48,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <a href="#"><i class="far fa-times-circle"></i></a>
-            </td>
-            <td><img src="image/Preserve 1.jpg" width="70px" alt="" /></td>
-            <td>Glassed Preserved Flowers</td>
-            <td>Rp 150.000</td>
-            <td><input type="number" value="1" min="0" name="" id="" /></td>
-            <td>150.000</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#"><i class="far fa-times-circle"></i></a>
-            </td>
-            <td><img src="image/Stuffed 1.webp" width="70px" alt="" /></td>
-            <td>Giant Stuffed Bear</td>
-            <td>Rp 100.000</td>
-            <td><input type="number" value="1" min="0" name="" id="" /></td>
-            <td>100.000</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#"><i class="far fa-times-circle"></i></a>
-            </td>
-            <td>
-              <img
-                src="image/Music-Box-Peksi-Merak-S-01.jpg"
-                width="70px"
-                alt=""
-              />
-            </td>
-            <td>Premium Music Box</td>
-            <td>Rp 250.000</td>
-            <td><input type="number" value="1" min="0" name="" id="" /></td>
-            <td>250.000</td>
-          </tr>
+          <!-- Cart items will be dynamically inserted here -->
         </tbody>
       </table>
     </section>
@@ -104,22 +61,10 @@
           <button class="button">Apply</button>
         </div>
       </div>
-
       <div id="subtotal">
         <h3>Total</h3>
         <table>
-          <tr>
-            <td>Subtotal</td>
-            <td>Rp 500.000</td>
-          </tr>
-          <tr>
-            <td>Shipping</td>
-            <td>Free</td>
-          </tr>
-          <tr>
-            <td><strong>Total</strong></td>
-            <td><strong>Rp 500.000</strong></td>
-          </tr>
+          <!-- Subtotal and total will be dynamically inserted here -->
         </table>
         <button class="button">Checkout</button>
       </div>
@@ -127,7 +72,7 @@
 
     <section class="products" id="products">
       <div class="box">
-        <h2>Shop More!</h2>
+        <h2>Products</h2>
         <p>Gifts For Your Beloved</p>
         <div class="container">
           <article class="card">
@@ -199,15 +144,15 @@
         <div class="social">
           <h4>Our Socials</h4>
           <div class="icon">
-            <a href="https://facebook.com" target="_blank">
-              <i class="fab fa-facebook-square"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://instagram.com" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
+            <a href="https://facebook.com" target="_blank"
+              ><i class="fab fa-facebook-square"></i
+            ></a>
+            <a href="https://twitter.com" target="_blank"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="https://instagram.com" target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -232,26 +177,106 @@
       </div>
     </footer>
 
-    <script>
-      const mainImage = document.getElementById("MainImg");
-      const smallImages = document.getElementsByClassName("small-image");
-      const productTitle = document.getElementById("productTitle");
-      const quantityInput = document.getElementById("quantityInput");
+    <script src="script.js"></script>
 
-      for (let i = 0; i < smallImages.length; i++) {
-        smallImages[i].onclick = function () {
-          mainImage.src = smallImages[i].src;
-          productTitle.textContent = smallImages[i].getAttribute("data-title");
-        };
+    <script>
+      function updateCart() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartTableBody = document.querySelector("#cart tbody");
+        let subtotal = 0;
+
+        cartTableBody.innerHTML = ""; // Clear existing rows
+
+        cart.forEach((item, index) => {
+          const total = item.price * item.quantity;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td><a href="#" class="delete-row" data-index="${index}"><i class="far fa-times-circle"></i></a></td>
+            <td><img src="${item.image}" width="70px" alt="${
+            item.productType
+          }" /></td>
+            <td>${item.productType}</td>
+            <td>Rp ${item.price.toLocaleString()}</td>
+            <td><input type="number" value="${
+              item.quantity
+            }" min="0" data-index="${index}" /></td>
+            <td>Rp ${total.toLocaleString()}</td>
+          `;
+
+          cartTableBody.appendChild(row);
+          subtotal += total;
+        });
+
+        // Update totals
+        const totalElement = document.querySelector("#subtotal table");
+        totalElement.innerHTML = `
+          <tr>
+            <td>Subtotal</td>
+            <td>Rp ${subtotal.toLocaleString()}</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td>Free</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>Rp ${subtotal.toLocaleString()}</strong></td>
+          </tr>
+        `;
+
+        // Add event listeners for delete buttons
+        document.querySelectorAll(".delete-row").forEach((button) => {
+          button.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const index = this.getAttribute("data-index");
+            deleteCartItem(index);
+            updateCart(); // Update the cart display
+          });
+        });
+
+        // Add event listeners for quantity inputs
+        document.querySelectorAll("input[type='number']").forEach((input) => {
+          input.addEventListener("input", function () {
+            const index = this.getAttribute("data-index");
+            const newQuantity = parseInt(this.value, 10);
+
+            if (newQuantity < 0) {
+              this.value = 0;
+            }
+
+            updateCartQuantity(index, newQuantity);
+            updateCart(); // Update the cart display
+          });
+        });
       }
 
-      quantityInput.addEventListener("input", function () {
-        if (quantityInput.value < 0) {
-          quantityInput.value = 0;
-        }
-      });
-    </script>
+      function deleteCartItem(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1); // Remove item at the specified index
+        localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+      }
 
-    <script src="script.js"></script>
+      function updateCartQuantity(index, newQuantity) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (newQuantity <= 0) {
+          cart.splice(index, 1); // Remove item if quantity is 0 or less
+        } else {
+          cart[index].quantity = newQuantity;
+        }
+        localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
+      }
+
+      document.addEventListener("DOMContentLoaded", updateCart);
+
+      document
+        .querySelector("#add-cart .button")
+        .addEventListener("click", function () {
+          alert("Checkout complete!");
+          localStorage.removeItem("cart"); // Clear the cart
+          updateCart(); // Update the cart to reflect changes
+        });
+    </script>
   </body>
 </html>
