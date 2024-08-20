@@ -1,9 +1,8 @@
-// routes/productRoutes.js
 const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
 
-// Define route to get product details by ID
-router.get("/products/:id", productController.getProductDetails);
+router.get("/", productController.index);
+router.get("/product/:id", productController.show);
 
 module.exports = router;

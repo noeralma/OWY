@@ -3,57 +3,67 @@
  * @returns { Promise<void> }
  */
 exports.seed = function (knex) {
+  // Deletes ALL existing entries
   return knex("products")
     .del()
     .then(function () {
       return knex("products").insert([
         {
+          id: 1,
           name: "Basic Music Box",
-          price: 29.99,
-          image_url: "/images/basic-music-box.jpg",
-          product_type_id: 1,
+          description: "A simple, elegant music box.",
+          price: 250000,
+          image_url:
+            "/images/brd-44261_kotak-musik-kayu-you-are-my-sunshine-wooden-music-box-kado-unik-gf_full01.webp",
         },
         {
+          id: 2,
           name: "Premium Music Box",
-          price: 49.99,
-          image_url: "/images/premium-music-box.jpg",
-          product_type_id: 2,
+          description: "A premium music box with more features.",
+          price: 350000,
+          image_url: "/images/Music-Box-Peksi-Merak-S-01.jpg",
         },
         {
+          id: 3,
           name: "Ceramic Music Box",
-          price: 39.99,
-          image_url: "/images/ceramic-music-box.jpg",
-          product_type_id: 3,
+          description: "A beautiful ceramic music box.",
+          price: 300000,
+          image_url: "/images/Music-Box-Peksi-Merak-S-02.jpg",
         },
         {
-          name: "Vintage Music Box",
-          price: 59.99,
-          image_url: "/images/vintage-music-box.jpg",
-          product_type_id: 4,
-        },
-        {
-          name: "Glassed Preserved Flowers",
-          price: 19.99,
-          image_url: "/images/glassed-preserved-flowers.jpg",
-          product_type_id: 5,
-        },
-        {
-          name: "Sphere Preserved Flower",
-          price: 24.99,
-          image_url: "/images/sphere-preserved-flowers.jpg",
-          product_type_id: 6,
-        },
-        {
-          name: "Giant Stuffed Bear",
-          price: 89.99,
-          image_url: "/images/giant-stuffed-bear.jpg",
-          product_type_id: 7,
-        },
-        {
+          id: 4,
           name: "Giant Stuffed Corgi",
-          price: 79.99,
-          image_url: "/images/giant-stuffed-corgi.jpg",
-          product_type_id: 8,
+          description: "A giant, huggable stuffed corgi.",
+          price: 350000,
+          image_url: "/images/Music-Box-Peksi-Merak-S-03.jpg",
+        },
+        {
+          id: 5,
+          name: "Glassed Preserved Flowers",
+          description: "Preserved flowers in a glass dome.",
+          price: 150000,
+          image_url: "/images/Preserve 1.jpg",
+        },
+        {
+          id: 6,
+          name: "Sphere Preserved Flowers",
+          description: "Preserved flowers in a sphere.",
+          price: 180000,
+          image_url: "/images/Preserve 2.jpg",
+        },
+        {
+          id: 7,
+          name: "Giant Stuffed Bear",
+          description: "A giant, huggable stuffed bear.",
+          price: 100000,
+          image_url: "/images/Stuffed 1.webp",
+        },
+        {
+          id: 8,
+          name: "Giant Stuffed Corgi",
+          description: "A giant, huggable stuffed corgi.",
+          price: 120000,
+          image_url: "/images/Stuffed 2.webp",
         },
       ]);
     });

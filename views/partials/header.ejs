@@ -1,0 +1,33 @@
+<header class="header" id="header">
+  <a href="/"
+    ><img src="/images/owy-high-resolution-logo-transparent.png" alt="OWY Logo"
+  /></a>
+  <nav>
+    <ul class="navbar">
+      <li>
+        <a
+          class="<%= (typeof page !== 'undefined' && page === 'home') ? 'active' : '' %>"
+          href="/"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="<%= (typeof page !== 'undefined' && page === 'cart') ? 'active' : '' %>"
+          href="/cart"
+          >Cart</a
+        >
+      </li>
+      <li>
+        <a
+          class="<%= (typeof page !== 'undefined' && page === 'orders') ? 'active' : '' %>"
+          href="/orders"
+          >Orders</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div class="mobile">
+    <i id="bar" class="fas fa-outdent"></i>
+  </div>
+</header>

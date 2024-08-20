@@ -1,34 +1,25 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+
 const app = express();
-const port = 3000;
-const db = require("./db");
 
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static("public"));
+app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.set("view engine", "ejs");
 
-// Endpoint to get all products
-app.get("/products", async (req, res) => {
-  try {
-    const products = await db("products").select("*");
-    res.json(products);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
-// Endpoint to get all product types
-app.get("/product-types", async (req, res) => {
-  try {
-    const productTypes = await db("product_types").select("*");
-    res.json(productTypes);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+app.use("/", productRoutes);
+app.use("/", cartRoutes);
+app.use("/", orderRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

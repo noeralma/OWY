@@ -1,15 +1,12 @@
-// controllers/productController.js
-const ProductModel = require("../models/productModel");
+const Product = require("../models/productModel");
 
-const getProductDetails = (req, res) => {
-  const productId = parseInt(req.params.id, 10);
-  const product = ProductModel.getProductById(productId);
-
-  if (product) {
-    res.json(product);
-  } else {
-    res.status(404).json({ message: "Product not found" });
-  }
+module.exports = {
+  index: async (req, res) => {
+    const products = await Product.getAllProducts();
+    res.render("pages/index", { products });
+  },
+  show: async (req, res) => {
+    const product = await Product.getProductById(req.params.id);
+    res.render("pages/product", { product });
+  },
 };
-
-module.exports = { getProductDetails };
