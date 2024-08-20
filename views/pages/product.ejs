@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OWY - <%= product.name %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <% include ../partials/header %>
+
+    <section class="product-details" id="product-details">
+      <div class="product-image">
+        <img
+          src="<%= product.image_url %>"
+          width="100%"
+          id="MainImg"
+          alt="<%= product.name %>"
+        />
+      </div>
+
+      <div class="product-desc">
+        <h6>Product</h6>
+        <h4><%= product.name %></h4>
+        <h2>Rp <%= product.price.toLocaleString() %></h2>
+        <form action="/cart/add" method="POST">
+          <select name="productId">
+            <option value="<%= product.id %>"><%= product.name %></option>
+          </select>
+          <input
+            id="quantityInput"
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+          />
+          <button type="submit">Add to cart</button>
+        </form>
+        <h4>Product Description</h4>
+        <span><%= product.description %></span>
+      </div>
+    </section>
+
+    <% include ../partials/footer %>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

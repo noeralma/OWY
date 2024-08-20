@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OWY - Your Orders</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <% include ../partials/header %>
+
+    <section id="orders" class="orders">
+      <h2>Your Orders</h2>
+      <table width="100%">
+        <thead>
+          <tr>
+            <td>Order ID</td>
+            <td>Date</td>
+            <td>Items</td>
+            <td>Total Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (orders.length > 0) { %> <% orders.forEach(order => { %>
+          <tr>
+            <td><%= order.order_id %></td>
+            <td><%= new Date(order.date).toLocaleDateString() %></td>
+            <td>
+              <ul>
+                <% order.items.forEach(item => { %>
+                <li><%= item.name %> x <%= item.quantity %></li>
+                <% }); %>
+              </ul>
+            </td>
+            <td>Rp <%= order.total.toLocaleString() %></td>
+          </tr>
+          <% }); %> <% } else { %>
+          <tr>
+            <td colspan="4" align="center">No orders found</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+
+    <% include ../partials/footer %>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

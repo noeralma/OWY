@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OWY - Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <% include ../partials/header %>
+
+    <main class="products">
+      <div class="box">
+        <h2>Products</h2>
+        <p>Gifts For Your Beloved</p>
+        <div class="container">
+          <% products.forEach(function(product) { %>
+          <article class="card">
+            <a href="/product/<%= product.id %>">
+              <img src="<%= product.image_url %>" alt="<%= product.name %>" />
+              <div class="desc">
+                <h5><%= product.name %></h5>
+                <h4>Rp <%= product.price.toLocaleString() %></h4>
+              </div>
+            </a>
+          </article>
+          <% }); %>
+        </div>
+      </div>
+    </main>
+
+    <% include ../partials/footer %>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

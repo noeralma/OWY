@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OWY - Cart</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <% include ../partials/header %>
+
+    <section id="cart" class="cart">
+      <h2>Your Cart</h2>
+      <table width="100%">
+        <thead>
+          <tr>
+            <td>Image</td>
+            <td>Product</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Subtotal</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (cartItems.length > 0) { %> <% cartItems.forEach(item => { %>
+          <tr>
+            <td>
+              <img
+                src="<%= item.image_url %>"
+                width="70px"
+                alt="<%= item.name %>"
+              />
+            </td>
+            <td><%= item.name %></td>
+            <td>Rp <%= item.price.toLocaleString() %></td>
+            <td><%= item.quantity %></td>
+            <td>Rp <%= (item.price * item.quantity).toLocaleString() %></td>
+          </tr>
+          <% }); %>
+          <tr>
+            <td colspan="4" align="right"><strong>Total:</strong></td>
+            <td>
+              <strong
+                >Rp <%= cartItems.reduce((acc, item) => acc + item.price *
+                item.quantity, 0).toLocaleString() %></strong
+              >
+            </td>
+          </tr>
+          <% } else { %>
+          <tr>
+            <td colspan="5" align="center">Your cart is empty</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+      <form action="/cart/checkout" method="POST">
+        <button type="submit" class="button">Checkout</button>
+      </form>
+    </section>
+
+    <% include ../partials/footer %>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>
